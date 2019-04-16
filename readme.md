@@ -18,3 +18,9 @@ Reference `EGSwift.framework` built by Carthage.
 EarlGrey has to be [included by .xcodeproj](https://github.com/google/EarlGrey/tree/earlgrey2/Demo/DemoApp)
 
 - `Carthage/Checkouts/EarlGrey/EarlGrey.xcodeproj`
+
+## To Do
+
+- [ ] Move helper methods into EGSwift framework
+- [ ] Write tests for the helper methods using `EarlGrey/Tests/FunctionalTests`
+- [ ] Update `canvas-ios` to use the new helpers
