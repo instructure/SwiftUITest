@@ -11,6 +11,8 @@
 		F9F2835322666CC60098ED62 /* EGSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F2835222666CC60098ED62 /* EGSwift.swift */; };
 		F9F2835B22666D280098ED62 /* EGSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F2835A22666D280098ED62 /* EGSwiftUITests.swift */; };
 		F9F283632266700D0098ED62 /* EGSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F98541DA2266673D00AAC0E9 /* EGSwift.framework */; };
+		F9F28367226779010098ED62 /* libTestLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F28366226779010098ED62 /* libTestLib.a */; };
+		F9F283692267795E0098ED62 /* EarlGrey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F283682267795E0098ED62 /* EarlGrey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,8 @@
 		F9F2835822666D280098ED62 /* EGSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EGSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9F2835A22666D280098ED62 /* EGSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EGSwiftUITests.swift; sourceTree = "<group>"; };
 		F9F2835C22666D280098ED62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9F28366226779010098ED62 /* libTestLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libTestLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9F283682267795E0098ED62 /* EarlGrey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarlGrey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9F28367226779010098ED62 /* libTestLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +140,7 @@
 				F98541DD2266673D00AAC0E9 /* EGSwift.h */,
 				F98541DE2266673D00AAC0E9 /* Info.plist */,
 				F9F2835222666CC60098ED62 /* EGSwift.swift */,
+				F9F283682267795E0098ED62 /* EarlGrey.swift */,
 			);
 			path = EGSwift;
 			sourceTree = "<group>";
@@ -165,6 +171,7 @@
 		F9F283622266700D0098ED62 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F9F28366226779010098ED62 /* libTestLib.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -337,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9F283692267795E0098ED62 /* EarlGrey.swift in Sources */,
 				F9F2835322666CC60098ED62 /* EGSwift.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,6 +377,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -433,6 +442,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -490,6 +500,7 @@
 		F98541E32266673D00AAC0E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -505,18 +516,22 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.instructure.EGSwift;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Carthage/Checkouts/EarlGrey/**";
 			};
 			name = Debug;
 		};
 		F98541E42266673D00AAC0E9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -532,11 +547,14 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.instructure.EGSwift;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Carthage/Checkouts/EarlGrey/**";
 			};
 			name = Release;
 		};

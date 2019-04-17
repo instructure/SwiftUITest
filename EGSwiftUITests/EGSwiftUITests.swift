@@ -9,6 +9,7 @@ class EGSwiftUITests: XCTestCase {
    }
 
     func testExample() {
+       TestHelpers.tapKeyWindow()
        TestHelpers.printMessage()
        ok()
     }
