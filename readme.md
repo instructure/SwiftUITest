@@ -1,4 +1,7 @@
-# EarlGrey 2 Swift wrapper
+# Swift UI testing framework
+
+Provides a pluggable abstraction over XCUITest and eventually EarlGrey.
+This allows changing UI test frameworks without having to rewrite tests.
 
 - `brew install carthage`
 - `carthage bootstrap`
@@ -8,29 +11,15 @@
 Define a `Cartfile`
 
 ```
-github "instructure/earlgrey2-swift" "master"
+github "instructure/SwiftUITest" "master"
 ```
 
-Reference `EGSwift.framework` built by Carthage.
+Reference `SwiftUITest.framework` built by Carthage.
 
-- `Carthage/Build/iOS/EGSwift.framework`
-
-EarlGrey has to be [included by .xcodeproj](https://github.com/google/EarlGrey/tree/earlgrey2/Demo/DemoApp)
-
-- `Carthage/Checkouts/EarlGrey/EarlGrey.xcodeproj`
+- `Carthage/Build/iOS/SwiftUITest.framework`
 
 ## To Do
 
-- [ ] Move helper methods into EGSwift framework
+- [ ] Move helper methods into SwiftUITest framework
 - [ ] Write tests for the helper methods using `EarlGrey/Tests/FunctionalTests`
 - [ ] Update `canvas-ios` to use the new helpers
-
-## Issues
-
-Wrapping EarlGrey in a Swift framework has the following challenges:
-
-- Bridging header is not supported in a framework target
-  - `using bridging headers with framework targets is unsupported`
-- Framework header is able to import EarlGrey headers
-  - `CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES` does not resolve the issue
-  - `Include of non-modular header inside framework module`
