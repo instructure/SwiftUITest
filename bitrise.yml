@@ -10,6 +10,8 @@ trigger_map:
 workflows:
   primary:
     steps:
+    - git::https://github.com/instructure/steps-verify-pr.git@master:
+        title: Verify PR
     - script:
         title: Boot iPhone Xʀ
         inputs:
@@ -54,7 +56,7 @@ workflows:
             xcrun simctl install booted ~/Library/Developer/Xcode/DerivedData/FunctionalTests-*/Build/Products/Debug-iphonesimulator/FunctionalTestRig.app
         title: Install FunctionalTestRig
     - script:
-        title: Build  SwiftUITest
+        title: Build SwiftUITest
         inputs:
         - content: |
             #!/usr/bin/env bash
