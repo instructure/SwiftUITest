@@ -29,5 +29,5 @@ Reference `SwiftUITest.framework` built by Carthage.
 ## To Do
 
 - [ ] Move helper methods into SwiftUITest framework
-- [ ] Write tests for the helper methods using `EarlGrey/Tests/FunctionalTests`
+- [x] Write tests for the helper methods using `EarlGrey/Tests/FunctionalTests`
 - [ ] Update `canvas-ios` to use the new helpers
