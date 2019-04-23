@@ -1,0 +1,82 @@
+---
+format_version: '7'
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: other
+trigger_map:
+- push_branch: "*"
+  workflow: primary
+- pull_request_source_branch: "*"
+  workflow: primary
+workflows:
+  primary:
+    steps:
+    - script:
+        title: Boot iPhone Xʀ
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            set -ex
+
+            # launch simulator via Xcode then find ID using simctl list.
+            # xcrun simctl list | grep Booted
+            # iPhone Xʀ (481AE6AD-E7DB-4E9B-848C-7C3C59CDC2C7) (Booted)
+
+            # Print device id for debugging. If bitrise is on a different Xcode version the ID will be different.
+            xcrun simctl list | grep "iPhone Xʀ"
+
+            xcrun simctl boot B430B7D3-3893-44C3-835C-147F19EF8F8B
+    - activate-ssh-key:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone: {}
+    - carthage:
+        inputs:
+        - carthage_options: "--no-build"
+        title: Carthage bootstrap --no-build
+    - script:
+        inputs:
+        - content: |
+            #!/usr/bin/env bash
+            set -ex
+
+            cd ./Carthage/Checkouts/EarlGrey/Tests/FunctionalTests/
+
+            xcodebuild build \
+              -project FunctionalTests.xcodeproj \
+              -scheme FunctionalTestRig \
+              -destination "$DESTINATION"
+        title: Build FunctionalTestRig
+    - script:
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            set -ex
+
+            xcrun simctl install booted ~/Library/Developer/Xcode/DerivedData/FunctionalTests-*/Build/Products/Debug-iphonesimulator/FunctionalTestRig.app
+        title: Install FunctionalTestRig
+    - script:
+        title: Build  SwiftUITest
+        inputs:
+        - content: |
+            #!/usr/bin/env bash
+            set -ex
+
+            xcodebuild build \
+              -project SwiftUITest.xcodeproj \
+              -scheme SwiftUITest \
+              -destination "$DESTINATION"
+    - script:
+        title: Test SwiftUITest
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            set -ex
+
+            xcodebuild test \
+              -project SwiftUITest.xcodeproj \
+              -scheme SwiftUITest \
+              -destination "$DESTINATION"
+app:
+  envs:
+  - opts:
+      is_expand: false
+    DESTINATION: platform=iOS Simulator,name=iPhone Xʀ,OS=latest
