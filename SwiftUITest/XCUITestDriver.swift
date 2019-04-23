@@ -7,7 +7,11 @@ private struct XCUIElementWrapper: Element {
     init(_ xcuiElement: XCUIElement) {
         element = xcuiElement
     }
-    
+
+    var label: String {
+        return element.label
+    }
+
     var isVisible: Bool {
         waitToExist()
         return element.isHittable
@@ -19,7 +23,7 @@ private struct XCUIElementWrapper: Element {
     }
     
     @discardableResult
-    func waitToExist(_ timeout: TimeInterval = 10) -> Bool {
+    private func waitToExist(_ timeout: TimeInterval = 10) -> Bool {
         // TODO: Wait for no more network activity, etc.
         return element.waitForExistence(timeout: timeout)
     }
@@ -32,9 +36,14 @@ extension XCUIElement {
 }
 
 struct XCUITestDriver: Driver {
+    let app: XCUIApplication
+    
+    init(_ app: XCUIApplication) {
+        self.app = app
+    }
     
     func find(label: String) -> Element {
-       return XCUIApplication()
+       return app
             .descendants(matching: .any)
             .matching(NSPredicate(format: "%K == %@", #keyPath(XCUIElement.label), label))
             .firstMatch

@@ -6,6 +6,14 @@ This allows changing UI test frameworks without having to rewrite tests.
 - `brew install carthage`
 - `carthage bootstrap`
 
+## Developing SwiftUITest
+
+Run `FunctionalTestRig` once to get it installed on the simulator.
+
+- `carthage bootstrap --no-build`
+- `open Carthage/Checkouts/EarlGrey/Tests/FunctionalTests/FunctionalTests.xcodeproj`
+- Run `FunctionalTestRig`
+
 ## Usage
 
 Define a `Cartfile`
