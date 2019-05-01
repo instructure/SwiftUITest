@@ -11,6 +11,10 @@ private struct XCUIElementWrapper: Element {
     var label: String {
         return element.label
     }
+    
+    var id: String {
+        return element.identifier
+    }
 
     var isVisible: Bool {
         waitToExist()
@@ -46,6 +50,14 @@ struct XCUITestDriver: Driver {
        return app
             .descendants(matching: .any)
             .matching(NSPredicate(format: "%K == %@", #keyPath(XCUIElement.label), label))
+            .firstMatch
+            .toElement()
+    }
+    
+    func find(id: String) -> Element {
+        return app
+            .descendants(matching: .any)
+            .matching(NSPredicate(format: "%K == %@", #keyPath(XCUIElement.identifier), id))
             .firstMatch
             .toElement()
     }

@@ -4,11 +4,13 @@ import XCTest
 public protocol Element {
     var isVisible: Bool { get }
     var label: String { get }
+    var id: String { get }
     func tap()
 }
 
 public protocol Driver {
     func find(label: String) -> Element
+    func find(id: String) -> Element
 }
 
 public struct DriverFactory {
