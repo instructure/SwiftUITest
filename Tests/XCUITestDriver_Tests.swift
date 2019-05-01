@@ -1,4 +1,5 @@
 import XCTest
+import SwiftUITest
 
 class XCUITestDriver_Tests: SwiftUITestCase {
 
@@ -46,6 +47,15 @@ class XCUITestDriver_Tests: SwiftUITestCase {
 
         backButtonTap()
         
+        XCTAssertTrue(a11yButton.isVisible)
+    }
+    
+    func test_vanish() {
+        let a11yButton = driver.find(label: "Accessibility Views")
+        a11yButton.tap()
+        a11yButton.waitToVanish(Timeout())
+        
+        backButtonTap()
         XCTAssertTrue(a11yButton.isVisible)
     }
 }

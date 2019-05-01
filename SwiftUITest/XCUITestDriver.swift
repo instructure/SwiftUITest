@@ -3,9 +3,11 @@ import XCTest
 
 private struct XCUIElementWrapper: Element {
     let element: XCUIElement
+    let testCase: XCTestCase
     
-    init(_ xcuiElement: XCUIElement) {
-        element = xcuiElement
+    init(_ element: XCUIElement, _ testCase: XCTestCase) {
+        self.element = element
+        self.testCase = testCase
     }
 
     var label: String {
@@ -17,33 +19,42 @@ private struct XCUIElementWrapper: Element {
     }
 
     var isVisible: Bool {
-        waitToExist()
+        waitToExist(Timeout())
         return element.isHittable
     }
     
     func tap() {
-        waitToExist()
+        waitToExist(Timeout())
         element.tap()
     }
     
     @discardableResult
-    private func waitToExist(_ timeout: TimeInterval = 10) -> Bool {
+    private func waitToExist(_ timeout: Timeout) -> Bool {
         // TODO: Wait for no more network activity, etc.
-        return element.waitForExistence(timeout: timeout)
+        return element.waitForExistence(timeout: timeout.value)
+    }
+    
+    func waitToVanish(_ timeout: Timeout) {
+        let vanish = NSPredicate(format: "exists == false")
+        
+        testCase.expectation(for: vanish, evaluatedWith: element, handler: nil)
+        testCase.waitForExpectations(timeout: timeout.value, handler: nil)
     }
 }
 
 extension XCUIElement {
-    func toElement() -> Element {
-        return XCUIElementWrapper(self)
+    func toElement(_ testCase: XCTestCase) -> Element {
+        return XCUIElementWrapper(self, testCase)
     }
 }
 
 struct XCUITestDriver: Driver {
     let app: XCUIApplication
+    let testCase: XCTestCase
     
-    init(_ app: XCUIApplication) {
+    init(_ app: XCUIApplication, _ testCase: XCTestCase) {
         self.app = app
+        self.testCase = testCase
     }
     
     func find(label: String) -> Element {
@@ -51,7 +62,7 @@ struct XCUITestDriver: Driver {
             .descendants(matching: .any)
             .matching(NSPredicate(format: "%K == %@", #keyPath(XCUIElement.label), label))
             .firstMatch
-            .toElement()
+            .toElement(testCase)
     }
     
     func find(id: String) -> Element {
@@ -59,6 +70,6 @@ struct XCUITestDriver: Driver {
             .descendants(matching: .any)
             .matching(NSPredicate(format: "%K == %@", #keyPath(XCUIElement.identifier), id))
             .firstMatch
-            .toElement()
+            .toElement(testCase)
     }
 }
