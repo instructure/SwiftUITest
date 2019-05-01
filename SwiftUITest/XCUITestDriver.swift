@@ -22,14 +22,23 @@ private struct XCUIElementWrapper: Element {
         waitToExist(Timeout())
         return element.isHittable
     }
-    
+
+    var isEnabled: Bool {
+        waitToExist(Timeout())
+        return element.isEnabled
+    }
+
     func tap() {
         waitToExist(Timeout())
         element.tap()
     }
-    
+
+    func enterText(_ text: String) {
+        // ..
+    }
+
     @discardableResult
-    private func waitToExist(_ timeout: Timeout) -> Bool {
+    func waitToExist(_ timeout: Timeout) -> Bool {
         // TODO: Wait for no more network activity, etc.
         return element.waitForExistence(timeout: timeout.value)
     }

@@ -39,7 +39,13 @@ class XCUITestDriver_Tests: SwiftUITestCase {
         let ele = driver.find(label: label)
         XCTAssertTrue(ele.isVisible)
     }
-    
+
+    func test_isEnabled() {
+        let label = "Accessibility Views"
+        let ele = driver.find(label: label)
+        XCTAssertTrue(ele.isEnabled)
+    }
+
     func test_tap() {
         let a11yButton = driver.find(label: "Accessibility Views")
         XCTAssertTrue(a11yButton.isVisible)
@@ -50,12 +56,18 @@ class XCUITestDriver_Tests: SwiftUITestCase {
         XCTAssertTrue(a11yButton.isVisible)
     }
     
-    func test_vanish() {
+    func test_waitToVanish() {
         let a11yButton = driver.find(label: "Accessibility Views")
         a11yButton.tap()
         a11yButton.waitToVanish(Timeout())
         
         backButtonTap()
+        XCTAssertTrue(a11yButton.isVisible)
+    }
+
+    func test_waitToExist() {
+        let a11yButton = driver.find(label: "Accessibility Views")
+        a11yButton.waitToExist(Timeout())
         XCTAssertTrue(a11yButton.isVisible)
     }
 }
