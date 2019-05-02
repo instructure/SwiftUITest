@@ -1,15 +1,15 @@
 import XCTest
-import SwiftUITest
 
 class XCUITestDriver_Tests: SwiftUITestCase {
 
-    private func backButtonTap() {
-        let backButton = driver.find(label: "EarlGrey TestApp")
-        backButton.tap()
+    func test_swipeDown() {
+        driver.swipeDown()
     }
-    
-    // XCUITestDriver
-    
+
+    func test_swipeUp() {
+        driver.swipeUp()
+    }
+
     func test_find_label() {
         let label = "Accessibility Views"
         let ele = driver.find(label: label)
@@ -25,49 +25,16 @@ class XCUITestDriver_Tests: SwiftUITestCase {
         
         backButtonTap()
     }
-    
-    // XCUIElementWrapper
-    
-    func test_label() {
+
+    func test_find_type() {
+        let ele = driver.find(type: .table)
+        XCTAssertTrue(ele.elementType == .table)
+    }
+
+    func test_find_label_type() {
         let label = "Accessibility Views"
-        let ele = driver.find(label: label)
+        let ele = driver.find(label: label, type: .staticText)
         XCTAssertTrue(ele.label == label)
-    }
-    
-    func test_isVisible() {
-        let label = "Accessibility Views"
-        let ele = driver.find(label: label)
-        XCTAssertTrue(ele.isVisible)
-    }
-
-    func test_isEnabled() {
-        let label = "Accessibility Views"
-        let ele = driver.find(label: label)
-        XCTAssertTrue(ele.isEnabled)
-    }
-
-    func test_tap() {
-        let a11yButton = driver.find(label: "Accessibility Views")
-        XCTAssertTrue(a11yButton.isVisible)
-        a11yButton.tap()
-
-        backButtonTap()
-        
-        XCTAssertTrue(a11yButton.isVisible)
-    }
-    
-    func test_waitToVanish() {
-        let a11yButton = driver.find(label: "Accessibility Views")
-        a11yButton.tap()
-        a11yButton.waitToVanish(Timeout())
-        
-        backButtonTap()
-        XCTAssertTrue(a11yButton.isVisible)
-    }
-
-    func test_waitToExist() {
-        let a11yButton = driver.find(label: "Accessibility Views")
-        a11yButton.waitToExist(Timeout())
-        XCTAssertTrue(a11yButton.isVisible)
+        XCTAssertTrue(ele.elementType == .staticText)
     }
 }

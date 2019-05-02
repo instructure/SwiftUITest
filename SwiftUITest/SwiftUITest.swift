@@ -11,19 +11,29 @@ public struct Timeout {
 
 public protocol Element {
     var isVisible: Bool { get }
+    var isVisibleNow: Bool { get }
+    var value: String { get }
     var isEnabled: Bool { get }
     var label: String { get }
     var id: String { get }
+    var elementType: XCUIElement.ElementType { get }
     func tap()
     @discardableResult
     func waitToExist(_ timeout: Timeout) -> Bool
     func waitToVanish(_ timeout: Timeout)
-    func enterText(_ text: String)
+    func typeText(_ text: String)
+    func swipeDown()
+    func swipeUp()
 }
 
 public protocol Driver {
     func find(label: String) -> Element
     func find(id: String) -> Element
+    func find(type: XCUIElement.ElementType) -> Element
+    func find(label: String, type: XCUIElement.ElementType) -> Element
+
+    func swipeDown()
+    func swipeUp()
 }
 
 public struct DriverFactory {
