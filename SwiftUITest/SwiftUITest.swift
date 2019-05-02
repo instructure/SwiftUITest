@@ -24,6 +24,8 @@ public protocol Element {
     func typeText(_ text: String)
     func swipeDown()
     func swipeUp()
+    func child(label: String) -> Element
+    func child(elementType: XCUIElement.ElementType, index: Int) -> Element
 }
 
 public protocol Driver {

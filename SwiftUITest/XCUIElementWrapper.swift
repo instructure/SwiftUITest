@@ -70,6 +70,19 @@ struct XCUIElementWrapper: Element {
         element.swipeUp()
     }
 
+    func child(label: String) -> Element {
+        return element.descendants(matching: .any)
+            .matching(NSPredicate(format: "%K == %@", #keyPath(XCUIElement.label), label))
+            .firstMatch
+            .toElement(testCase)
+    }
+
+    func child(elementType: XCUIElement.ElementType, index: Int) -> Element {
+        return element.descendants(matching: elementType)
+            .element(boundBy: index)
+            .toElement(testCase)
+    }
+
     @discardableResult
     func waitToExist(_ timeout: Timeout) -> Bool {
         // TODO: Wait for no more network activity, etc.

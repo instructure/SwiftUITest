@@ -5,7 +5,7 @@ class SwiftUITestCase: XCTestCase {
     
     private static let app = XCUIApplication(bundleIdentifier: "com.google.earlgreyftr.dev")
     var driver: Driver = DriverFactory.getEarlGreyDriver()
-    private let app = SwiftUITestCase.app
+    let app = SwiftUITestCase.app
     private static var firstRun = true
 
     var backButton: Element = app.firstMatch.toElement(XCTestCase())
