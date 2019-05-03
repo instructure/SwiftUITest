@@ -10,6 +10,11 @@ struct XCUIElementWrapper: Element {
         self.testCase = testCase
     }
 
+    var exists: Bool {
+        waitToExist(Timeout())
+        return element.exists
+    }
+
     var label: String {
         waitToExist(Timeout())
         return element.label

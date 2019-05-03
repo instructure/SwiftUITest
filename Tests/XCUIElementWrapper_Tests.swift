@@ -3,6 +3,12 @@ import SwiftUITest
 
 class XCUIElementWrapper_Tests: SwiftUITestCase {
 
+    func test_exists() {
+        let label = "Accessibility Views"
+        let ele = driver.find(label: label)
+        XCTAssertTrue(ele.exists == true)
+    }
+
     func test_label() {
         let label = "Accessibility Views"
         let ele = driver.find(label: label)

@@ -10,6 +10,7 @@ public struct Timeout {
 }
 
 public protocol Element {
+    var exists: Bool { get }
     var isVisible: Bool { get }
     var isVisibleNow: Bool { get }
     var value: String { get }
