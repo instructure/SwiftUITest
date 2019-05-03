@@ -54,4 +54,12 @@ struct XCUITestDriver: Driver {
             .firstMatch
             .toElement(testCase)
     }
+
+    func find(id: String, type: XCUIElement.ElementType) -> Element {
+        return app
+            .descendants(matching: type)
+            .matching(NSPredicate(format: "%K == %@", #keyPath(XCUIElement.identifier), id))
+            .firstMatch
+            .toElement(testCase)
+    }
 }

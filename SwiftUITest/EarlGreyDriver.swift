@@ -2,6 +2,10 @@ import Foundation
 import XCTest
 
 struct EarlGreyDriver: Driver {
+    func find(id: String, type: XCUIElement.ElementType) -> Element {
+        fatalError("not implemented")
+    }
+
     func find(label: String, type: XCUIElement.ElementType) -> Element {
         fatalError("not implemented")
     }

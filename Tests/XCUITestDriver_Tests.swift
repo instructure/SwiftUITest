@@ -37,4 +37,15 @@ class XCUITestDriver_Tests: SwiftUITestCase {
         XCTAssertTrue(ele.label == label)
         XCTAssertTrue(ele.elementType == .staticText)
     }
+
+    func test_find_id_type() {
+        driver.find(label: "Multi finger swipe gestures").tap()
+
+        let id = "gestureRegonizedLabel"
+        let ele = driver.find(id: id, type: .staticText)
+        XCTAssertTrue(ele.id == id)
+        XCTAssertTrue(ele.elementType == .staticText)
+
+        backButtonTap()
+    }
 }
