@@ -8,7 +8,7 @@ import Foundation
 
 public protocol ElementId {}
 
-extension ElementId where Self: RawRepresentable, Self.RawValue: StringProtocol {
+public extension ElementId where Self: RawRepresentable, Self.RawValue: StringProtocol {
     public var id: String {
         return "\(String(describing: Self.self)).\(rawValue)"
     }
