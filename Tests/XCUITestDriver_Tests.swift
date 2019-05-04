@@ -26,6 +26,10 @@ class XCUITestDriver_Tests: SwiftUITestCase {
         backButtonTap()
     }
 
+    func test_find_elementId() {
+         XCTAssertFalse(driver.find(ElementId_Tests.LoginPage.resetPassword).isVisibleNow)
+    }
+
     func test_find_type() {
         let ele = driver.find(type: .table)
         XCTAssertTrue(ele.elementType == .table)
@@ -47,5 +51,9 @@ class XCUITestDriver_Tests: SwiftUITestCase {
         XCTAssertTrue(ele.elementType == .staticText)
 
         backButtonTap()
+    }
+
+    func test_find_elementId_type() {
+        XCTAssertFalse(driver.find(ElementId_Tests.LoginPage.resetPassword, type: .any).isVisibleNow)
     }
 }

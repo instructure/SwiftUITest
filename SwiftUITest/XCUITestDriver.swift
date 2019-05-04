@@ -66,4 +66,8 @@ struct XCUITestDriver: Driver {
             .firstMatch
             .toElement(testCase)
     }
+
+    func find<T: ElementId>(_ elementId: T, type: XCUIElement.ElementType) -> Element {
+        return find(id: elementId.id, type: type)
+    }
 }

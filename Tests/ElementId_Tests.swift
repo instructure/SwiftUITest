@@ -5,7 +5,7 @@ import SwiftUITest
 
 class ElementId_Tests: SwiftUITestCase {
 
-    enum LoginPage: String, CaseIterable, ElementId {
+    public enum LoginPage: String, CaseIterable, ElementId {
         case resetPassword
     }
 
