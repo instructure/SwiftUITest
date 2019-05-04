@@ -6,10 +6,12 @@ import Foundation
 //      case resetPassword
 //  }
 
-public protocol ElementId {}
+public protocol ElementId where Self: RawRepresentable, Self.RawValue: StringProtocol {
+    var id: String { get }
+}
 
-public extension ElementId where Self: RawRepresentable, Self.RawValue: StringProtocol {
-    public var id: String {
+public extension ElementId {
+    var id: String {
         return "\(String(describing: Self.self)).\(rawValue)"
     }
 }

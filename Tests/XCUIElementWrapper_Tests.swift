@@ -46,7 +46,7 @@ class XCUIElementWrapper_Tests: SwiftUITestCase {
 
     func test_value() {
         let label = "Accessibility Views"
-        var ele = driver.find(label: label)
+        let ele = driver.find(label: label)
         XCTAssertTrue(ele.value == "")
     }
 

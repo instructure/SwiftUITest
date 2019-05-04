@@ -32,6 +32,7 @@ public protocol Element {
 public protocol Driver {
     func find(label: String) -> Element
     func find(id: String) -> Element
+    func find<T: ElementId>(_ elementId: T) -> Element
     func find(type: XCUIElement.ElementType) -> Element
     func find(label: String, type: XCUIElement.ElementType) -> Element
     func find(id: String, type: XCUIElement.ElementType) -> Element

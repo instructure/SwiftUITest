@@ -31,7 +31,11 @@ struct XCUITestDriver: Driver {
             .firstMatch
             .toElement(testCase)
     }
-    
+
+    func find<T: ElementId>(_ elementId: T) -> Element {
+        return find(id: elementId.id)
+    }
+
     func find(id: String) -> Element {
         return app
             .descendants(matching: .any)
