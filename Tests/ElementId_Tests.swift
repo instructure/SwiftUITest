@@ -14,6 +14,6 @@ class ElementId_Tests: SwiftUITestCase {
         XCTAssertTrue(LoginPage.resetPassword.id == "LoginPage.resetPassword")
 
         // we can find directly with the enum
-        XCTAssertFalse(driver.find(LoginPage.resetPassword).isVisibleNow)
+        XCTAssertFalse(app.find(LoginPage.resetPassword).isVisibleNow)
     }
 }

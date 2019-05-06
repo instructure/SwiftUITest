@@ -3,15 +3,15 @@ import SwiftUITest
 
 class SwiftUITestCase: XCTestCase {
     
-    private static let app = XCUIApplication(bundleIdentifier: "com.google.earlgreyftr.dev")
-    var driver: Driver = DriverFactory.getEarlGreyDriver()
-    let app = SwiftUITestCase.app
-    private static var firstRun = true
+    private static let xcuiApp = XCUIApplication(bundleIdentifier: "com.google.earlgreyftr.dev")
+    let xcuiApp = SwiftUITestCase.xcuiApp
+    var backButton: Element = xcuiApp.firstMatch.toElement(XCTestCase())
 
-    var backButton: Element = app.firstMatch.toElement(XCTestCase())
+    // Always recompute app to avoid stale testCase references
+    private var getApp = { return DriverFactory.getEarlGreyDriver() }
+    var app: Driver { return getApp() }
 
-    // Reset app state on the very first test.
-    private func checkFirstRun() {
+    private func resetApp() {
         // Go back if there's a back button
         if (backButton.isVisibleNow) {
             backButtonTap()
@@ -19,8 +19,8 @@ class SwiftUITestCase: XCTestCase {
 
         // Make sure we're at the top of the list.
         // isVisibleNow isn't reliable on scroll views -- will always return yes
-        let a11yViews = driver.find(label: "Accessibility Views", type: .staticText)
-        driver.swipeDown()
+        let a11yViews = app.find(label: "Accessibility Views", type: .staticText)
+        app.swipeDown()
         a11yViews.waitToExist(Timeout())
 
         super.setUp()
@@ -28,12 +28,12 @@ class SwiftUITestCase: XCTestCase {
 
     override func setUp() {
         continueAfterFailure = false
-        app.activate()
-        
-        driver = DriverFactory.getXCUITestDriver(app, testCase: self)
-        backButton = driver.find(label: "EarlGrey TestApp", type: .button)
+        xcuiApp.activate()
 
-        checkFirstRun()
+        getApp = { return DriverFactory.getXCUITestDriver(self.xcuiApp, testCase: self) }
+        backButton = app.find(label: "EarlGrey TestApp", type: .button)
+
+        resetApp()
         
         super.setUp()
     }
