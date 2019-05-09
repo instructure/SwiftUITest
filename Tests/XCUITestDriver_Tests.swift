@@ -56,4 +56,16 @@ class XCUITestDriver_Tests: SwiftUITestCase {
     func test_find_elementId_type() {
         XCTAssertFalse(app.find(ElementId_Tests.LoginPage.resetPassword, type: .any).isVisibleNow)
     }
+
+    func test_find_parentID_label() {
+        let testApp = "EarlGrey TestApp"
+        let child = app.find(parentID: testApp, label: testApp)
+        XCTAssertTrue(child.label == testApp)
+    }
+
+    func test_find_parentID_type_index() {
+        let testApp = "EarlGrey TestApp"
+        let child = app.find(parentID: testApp, type: .any, index: 0)
+        XCTAssertTrue(child.label == testApp)
+    }
 }

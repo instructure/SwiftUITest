@@ -70,14 +70,6 @@ public extension ElementWrapper {
         element.swipeUp()
     }
 
-    func child(label: String) -> Element {
-        return element.child(label: label)
-    }
-
-    func child(elementType: XCUIElement.ElementType, index: Int) -> Element {
-        return element.child(elementType: elementType, index: index)
-    }
-
     func waitToExist(_ timeout: Timeout) -> Bool {
         return element.waitToExist(timeout)
     }

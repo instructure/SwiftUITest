@@ -25,8 +25,6 @@ public protocol Element {
     func typeText(_ text: String)
     func swipeDown()
     func swipeUp()
-    func child(label: String) -> Element
-    func child(elementType: XCUIElement.ElementType, index: Int) -> Element
 }
 
 public protocol Driver {
@@ -37,6 +35,9 @@ public protocol Driver {
     func find(label: String, type: XCUIElement.ElementType) -> Element
     func find(id: String, type: XCUIElement.ElementType) -> Element
     func find<T: ElementWrapper>(_ elementId: T, type: XCUIElement.ElementType) -> Element
+
+    func find(parentID: String, label: String) -> Element
+    func find(parentID: String, type: XCUIElement.ElementType, index: Int) -> Element
 
     func swipeDown()
     func swipeUp()

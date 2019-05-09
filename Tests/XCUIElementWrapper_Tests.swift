@@ -104,23 +104,4 @@ class XCUIElementWrapper_Tests: SwiftUITestCase {
         backButtonTap()
         XCTAssertTrue(a11yButton.isVisible)
     }
-
-    func test_child_label() {
-        let parent = app.find(type: .table)
-        XCTAssertTrue(parent.isVisibleNow)
-
-        let childLabel = "Accessibility Views"
-        let child = parent.child(label: childLabel)
-        XCTAssertTrue(child.label == childLabel)
-    }
-
-    func test_child_elementType_index() {
-        let parent = app.find(type: .table)
-        XCTAssertTrue(parent.isVisibleNow)
-
-        let childLabel = "Accessibility Views"
-        let child = parent.child(elementType: .staticText, index: 0)
-        XCTAssertTrue(child.label == childLabel)
-
-    }
 }
