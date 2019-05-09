@@ -31,7 +31,8 @@ public extension ElementWrapper {
         return element.label
     }
 
-    var id: String {
+    // renamed to 'accessibilityIdentifier' to avoid conflict with 'id' defined by 'extension ElementId'
+    var accessibilityIdentifier: String {
         return element.id
     }
 
