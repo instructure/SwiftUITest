@@ -5,7 +5,7 @@ import SwiftUITest
 
 class ElementId_Tests: SwiftUITestCase {
 
-    public enum LoginPage: String, CaseIterable, ElementId {
+    public enum LoginPage: String, CaseIterable, ElementWrapper {
         case resetPassword
     }
 
@@ -14,6 +14,6 @@ class ElementId_Tests: SwiftUITestCase {
         XCTAssertTrue(LoginPage.resetPassword.id == "LoginPage.resetPassword")
 
         // we can find directly with the enum
-        XCTAssertFalse(app.find(LoginPage.resetPassword).isVisibleNow)
+        XCTAssertFalse(LoginPage.resetPassword.isVisibleNow)
     }
 }

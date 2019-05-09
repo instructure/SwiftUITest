@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		F94ED107227A88700021E606 /* XCUIElementWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94ED106227A88700021E606 /* XCUIElementWrapper.swift */; };
 		F94ED109227A88CF0021E606 /* XCUIElementWrapper_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94ED108227A88CF0021E606 /* XCUIElementWrapper_Tests.swift */; };
-		F94ED112227CE4F40021E606 /* ElementId.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94ED111227CE4F40021E606 /* ElementId.swift */; };
-		F94ED114227CE53B0021E606 /* ElementId_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94ED113227CE53B0021E606 /* ElementId_Tests.swift */; };
+		F94ED112227CE4F40021E606 /* ElementWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94ED111227CE4F40021E606 /* ElementWrapper.swift */; };
+		F94ED114227CE53B0021E606 /* ElementWrapper_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94ED113227CE53B0021E606 /* ElementWrapper_Tests.swift */; };
 		F991CE25226E278200A11C56 /* SwiftUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F991CE24226E278200A11C56 /* SwiftUITest.swift */; };
 		F991CE27226E2A1400A11C56 /* EarlGreyDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F991CE26226E2A1400A11C56 /* EarlGreyDriver.swift */; };
 		F991CE29226E2A4600A11C56 /* XCUITestDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F991CE28226E2A4600A11C56 /* XCUITestDriver.swift */; };
@@ -23,8 +23,8 @@
 /* Begin PBXFileReference section */
 		F94ED106227A88700021E606 /* XCUIElementWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUIElementWrapper.swift; sourceTree = "<group>"; };
 		F94ED108227A88CF0021E606 /* XCUIElementWrapper_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUIElementWrapper_Tests.swift; sourceTree = "<group>"; };
-		F94ED111227CE4F40021E606 /* ElementId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementId.swift; sourceTree = "<group>"; };
-		F94ED113227CE53B0021E606 /* ElementId_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementId_Tests.swift; sourceTree = "<group>"; };
+		F94ED111227CE4F40021E606 /* ElementWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementWrapper.swift; sourceTree = "<group>"; };
+		F94ED113227CE53B0021E606 /* ElementWrapper_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementWrapper_Tests.swift; sourceTree = "<group>"; };
 		F991CE24226E278200A11C56 /* SwiftUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITest.swift; sourceTree = "<group>"; };
 		F991CE26226E2A1400A11C56 /* EarlGreyDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarlGreyDriver.swift; sourceTree = "<group>"; };
 		F991CE28226E2A4600A11C56 /* XCUITestDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUITestDriver.swift; sourceTree = "<group>"; };
@@ -69,7 +69,7 @@
 			children = (
 				F991CE30226F5E6C00A11C56 /* XCUITestDriver_Tests.swift */,
 				F94ED108227A88CF0021E606 /* XCUIElementWrapper_Tests.swift */,
-				F94ED113227CE53B0021E606 /* ElementId_Tests.swift */,
+				F94ED113227CE53B0021E606 /* ElementWrapper_Tests.swift */,
 				F991CE32226F5E6C00A11C56 /* Info.plist */,
 				F94ED10A227A88DB0021E606 /* util */,
 			);
@@ -111,7 +111,7 @@
 				F991CE24226E278200A11C56 /* SwiftUITest.swift */,
 				F991CE26226E2A1400A11C56 /* EarlGreyDriver.swift */,
 				F94ED106227A88700021E606 /* XCUIElementWrapper.swift */,
-				F94ED111227CE4F40021E606 /* ElementId.swift */,
+				F94ED111227CE4F40021E606 /* ElementWrapper.swift */,
 			);
 			path = SwiftUITest;
 			sourceTree = "<group>";
@@ -226,7 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F991CE31226F5E6C00A11C56 /* XCUITestDriver_Tests.swift in Sources */,
-				F94ED114227CE53B0021E606 /* ElementId_Tests.swift in Sources */,
+				F94ED114227CE53B0021E606 /* ElementWrapper_Tests.swift in Sources */,
 				F94ED109227A88CF0021E606 /* XCUIElementWrapper_Tests.swift in Sources */,
 				F991CE53226F753600A11C56 /* SwiftUITestCase.swift in Sources */,
 			);
@@ -238,7 +238,7 @@
 			files = (
 				F991CE27226E2A1400A11C56 /* EarlGreyDriver.swift in Sources */,
 				F991CE25226E278200A11C56 /* SwiftUITest.swift in Sources */,
-				F94ED112227CE4F40021E606 /* ElementId.swift in Sources */,
+				F94ED112227CE4F40021E606 /* ElementWrapper.swift in Sources */,
 				F991CE29226E2A4600A11C56 /* XCUITestDriver.swift in Sources */,
 				F94ED107227A88700021E606 /* XCUIElementWrapper.swift in Sources */,
 			);

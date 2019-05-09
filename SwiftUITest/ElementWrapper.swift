@@ -1,27 +1,25 @@
 import Foundation
 import XCTest
 
-// Enable defining enums that have a string element id
+// Enable defining enums that have a string element id and then invoking methods on them.
 //
-//  enum LoginPage: String, CaseIterable, ElementId {
+//  enum LoginPage: String, CaseIterable, ElementWrapper {
 //      case resetPassword
 //  }
 
-public protocol ElementId {
+public protocol ElementWrapper : Element {
     var id: String { get }
+    var element: Element { get }
 }
 
 // Provide default 'id' implementation for enums
-public extension ElementId where Self: RawRepresentable, Self.RawValue: StringProtocol {
+public extension ElementWrapper where Self: RawRepresentable, Self.RawValue: StringProtocol {
     var id: String {
         return "\(String(describing: Self.self)).\(rawValue)"
     }
 }
 
-public protocol ElementWrapper : Element {
-    var element: Element { get }
-}
-
+// Forward method calls to the underlying element
 public extension ElementWrapper {
     var exists: Bool {
         return element.exists

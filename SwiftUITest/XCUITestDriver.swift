@@ -32,7 +32,7 @@ struct XCUITestDriver: Driver {
             .toElement(testCase)
     }
 
-    func find<T: ElementId>(_ elementId: T) -> Element {
+    func find<T: ElementWrapper>(_ elementId: T) -> Element {
         return find(id: elementId.id)
     }
 
@@ -67,7 +67,7 @@ struct XCUITestDriver: Driver {
             .toElement(testCase)
     }
 
-    func find<T: ElementId>(_ elementId: T, type: XCUIElement.ElementType) -> Element {
+    func find<T: ElementWrapper>(_ elementId: T, type: XCUIElement.ElementType) -> Element {
         return find(id: elementId.id, type: type)
     }
 }

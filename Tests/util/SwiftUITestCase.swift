@@ -1,6 +1,15 @@
 import XCTest
 import SwiftUITest
 
+private var getApp = { return DriverFactory.getEarlGreyDriver() }
+var app: Driver { return getApp() }
+
+extension ElementWrapper {
+    var element: Element {
+        return app.find(id: id)
+    }
+}
+
 class SwiftUITestCase: XCTestCase {
     
     private static let xcuiApp = XCUIApplication(bundleIdentifier: "com.google.earlgreyftr.dev")
@@ -8,8 +17,7 @@ class SwiftUITestCase: XCTestCase {
     var backButton: Element = xcuiApp.firstMatch.toElement(XCTestCase())
 
     // Always recompute app to avoid stale testCase references
-    private var getApp = { return DriverFactory.getEarlGreyDriver() }
-    var app: Driver { return getApp() }
+
 
     private func resetApp() {
         // Go back if there's a back button
