@@ -17,7 +17,7 @@ public protocol Element {
     var isEnabled: Bool { get }
     var label: String { get }
     var id: String { get }
-    var elementType: XCUIElement.ElementType { get }
+    var elementType: String { get }
     func tap()
     @discardableResult
     func waitToExist(_ timeout: Timeout) -> Bool
@@ -31,13 +31,13 @@ public protocol Driver {
     func find(label: String) -> Element
     func find(id: String) -> Element
     func find<T: ElementWrapper>(_ elementId: T) -> Element
-    func find(type: XCUIElement.ElementType) -> Element
-    func find(label: String, type: XCUIElement.ElementType) -> Element
-    func find(id: String, type: XCUIElement.ElementType) -> Element
-    func find<T: ElementWrapper>(_ elementId: T, type: XCUIElement.ElementType) -> Element
+    func find(type: String) -> Element
+    func find(label: String, type: String) -> Element
+    func find(id: String, type: String) -> Element
+    func find<T: ElementWrapper>(_ elementId: T, type: String) -> Element
 
     func find(parentID: String, label: String) -> Element
-    func find(parentID: String, type: XCUIElement.ElementType, index: Int) -> Element
+    func find(parentID: String, type: String, index: Int) -> Element
 
     func swipeDown()
     func swipeUp()

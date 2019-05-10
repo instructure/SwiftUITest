@@ -26,7 +26,8 @@ class XCUIElementWrapper_Tests: SwiftUITestCase {
     func test_elementType() {
         let label = "Accessibility Views"
         let ele = app.find(label: label)
-        XCTAssertTrue(ele.elementType == .staticText)
+        XCTAssertEqual(ele.elementType, XCElementType.staticText)
+        XCTAssertEqual(ele.elementType, "staticText")
     }
 
     func test_isVisible() {
@@ -67,7 +68,7 @@ class XCUIElementWrapper_Tests: SwiftUITestCase {
     }
 
     func test_typeText() {
-        app.find(type: .table).swipeUp()
+        app.find(type: XCElementType.table).swipeUp()
         app.find(label: "Typing Views").tap()
 
         let textfield = app.find(id: "TypingTextField")
@@ -78,16 +79,16 @@ class XCUIElementWrapper_Tests: SwiftUITestCase {
 
         // scroll back to top
         backButtonTap()
-        app.find(type: .table).swipeDown()
-        app.find(type: .table).swipeDown()
+        app.find(type: XCElementType.table).swipeDown()
+        app.find(type: XCElementType.table).swipeDown()
     }
 
     func test_swipeDown() {
-        app.find(type: .table).swipeDown()
+        app.find(type: XCElementType.table).swipeDown()
     }
 
     func test_swipeUp() {
-        app.find(type: .table).swipeUp()
+        app.find(type: XCElementType.table).swipeUp()
     }
 
     func test_waitToExist() {

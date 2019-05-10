@@ -25,9 +25,9 @@ struct XCUIElementWrapper: Element {
         return element.identifier
     }
 
-    var elementType: XCUIElement.ElementType {
+    var elementType: String {
         waitToExist(Timeout())
-        return element.elementType
+        return XCElementType.from(element.elementType.rawValue)
     }
 
     var isVisible: Bool {

@@ -4,7 +4,7 @@ import XCTest
 // blocked on: https://github.com/google/EarlGrey/issues/820
 struct EarlGreyDriver: Driver {
 
-    func find<T>(_ elementId: T, type: XCUIElement.ElementType) -> Element where T : ElementWrapper {
+    func find<T>(_ elementId: T, type: String) -> Element where T : ElementWrapper {
         fatalError("not implemented")
     }
 
@@ -12,11 +12,11 @@ struct EarlGreyDriver: Driver {
         fatalError("not implemented")
     }
 
-    func find(id: String, type: XCUIElement.ElementType) -> Element {
+    func find(id: String, type: String) -> Element {
         fatalError("not implemented")
     }
 
-    func find(label: String, type: XCUIElement.ElementType) -> Element {
+    func find(label: String, type: String) -> Element {
         fatalError("not implemented")
     }
 
@@ -36,7 +36,7 @@ struct EarlGreyDriver: Driver {
         fatalError("not implemented")
     }
 
-    func find(type: XCUIElement.ElementType) -> Element {
+    func find(type: String) -> Element {
         fatalError("not implemented")
     }
 
@@ -44,7 +44,7 @@ struct EarlGreyDriver: Driver {
         fatalError("not implemented")
     }
 
-    func find(parentID: String, type: XCUIElement.ElementType, index: Int) -> Element {
+    func find(parentID: String, type: String, index: Int) -> Element {
         fatalError("not implemented")
     }
 }

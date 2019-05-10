@@ -27,7 +27,7 @@ class SwiftUITestCase: XCTestCase {
 
         // Make sure we're at the top of the list.
         // isVisibleNow isn't reliable on scroll views -- will always return yes
-        let a11yViews = app.find(label: "Accessibility Views", type: .staticText)
+        let a11yViews = app.find(label: "Accessibility Views", type: XCElementType.staticText)
         app.swipeDown()
         a11yViews.waitToExist(Timeout())
 
@@ -39,7 +39,7 @@ class SwiftUITestCase: XCTestCase {
         xcuiApp.activate()
 
         getApp = { return DriverFactory.getXCUITestDriver(self.xcuiApp, testCase: self) }
-        backButton = app.find(label: "EarlGrey TestApp", type: .button)
+        backButton = app.find(label: "EarlGrey TestApp", type: XCElementType.button)
 
         resetApp()
         

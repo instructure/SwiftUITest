@@ -1,7 +1,7 @@
 import XCTest
 import SwiftUITest
 
-class XCElementType_Tests {
+class XCElementType_Tests: SwiftUITestCase {
 
     func test_ElementType_to_string() {
         XCTAssertTrue(XCElementType.any == "any")

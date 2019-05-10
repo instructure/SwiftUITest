@@ -1,9 +1,30 @@
 import Foundation
 import XCTest
 
-private enum ElementType : UInt, CaseIterable, CustomStringConvertible {
+
+private enum ElementType : String, CaseIterable, CustomStringConvertible {
     var description: String {
         return String(describing: self.rawValue)
+    }
+
+    static var mapIntToStr: Dictionary<UInt, String> {
+        var result = Dictionary<UInt, String>()
+        var index = UInt(0)
+        ElementType.allCases.forEach { (element) in
+            result[index] = element.description
+            index += 1
+        }
+        return result
+    }
+
+    static var mapStrToInt: Dictionary<String, UInt> {
+        var result = Dictionary<String, UInt>()
+        var index = UInt(0)
+        ElementType.allCases.forEach { (element) in
+            result[element.description] = index
+            index += 1
+        }
+        return result
     }
 
     case any
@@ -98,7 +119,12 @@ public struct XCElementType  {
             return ele.description == type
             } ?? ElementType.any
 
-        return XCUIElement.ElementType.init(rawValue: found.rawValue) ?? XCUIElement.ElementType.any
+        let keyNumber = ElementType.mapStrToInt[found.description] ?? 0
+        return XCUIElement.ElementType.init(rawValue: keyNumber) ?? XCUIElement.ElementType.any
+    }
+
+    public static func from(_ index: UInt) -> String {
+        return ElementType.mapIntToStr[index] ?? ElementType.any.description
     }
 
     public static let any: String = ElementType.any.description

@@ -34,7 +34,7 @@ public extension ElementWrapper {
         return element.id
     }
 
-    var elementType: XCUIElement.ElementType {
+    var elementType: String {
         return element.elementType
     }
 
