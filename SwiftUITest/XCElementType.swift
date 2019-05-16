@@ -3,7 +3,11 @@ import XCTest
 
 private enum ElementType : String, CaseIterable, CustomStringConvertible {
     var description: String {
-        return String(describing: self.rawValue)
+        switch self {
+        case .segmentedControl: return "UISegment"
+        default:
+            return String(describing: self.rawValue)
+        }
     }
 
     static var intToStr: [UInt: String] {

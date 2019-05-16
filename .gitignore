@@ -1,2 +1,11 @@
+# Carthage
 Cartfile.resolved
 Carthage/
+
+# Xcode
+DerivedData
+xcuserdata
+*.xccheckout
+*.pbxuser
+*.ipa
+xctestrun/
