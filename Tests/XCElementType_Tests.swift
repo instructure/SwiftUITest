@@ -17,4 +17,8 @@ class XCElementType_Tests: SwiftUITestCase {
         XCTAssertEqual(XCElementType.from(0), "any")
         XCTAssertEqual(XCElementType.from(1), "other")
     }
+
+    func test_from_UISegment_to_ElementType() {
+        XCTAssertEqual(XCElementType.from("UISegment"), XCUIElement.ElementType.segmentedControl)
+    }
 }

@@ -11,7 +11,7 @@ This allows changing UI test frameworks without having to rewrite tests.
 Run `FunctionalTestRig` once to get it installed on the simulator.
 
 - `carthage bootstrap --no-build`
-- `open Carthage/Checkouts/EarlGrey/Tests/FunctionalTests/FunctionalTests.xcodeproj`
+- `open Carthage/Checkouts/EarlGrey/Tests/Functional/FunctionalTests.xcodeproj`
 - Run `FunctionalTestRig`
 
 ## Usage

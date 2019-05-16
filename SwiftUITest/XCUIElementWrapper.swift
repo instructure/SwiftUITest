@@ -62,6 +62,7 @@ struct XCUIElementWrapper: Element {
 
     func typeText(_ text: String) {
         waitToExist(Timeout())
+        element.tap()
         element.typeText(text)
     }
 
