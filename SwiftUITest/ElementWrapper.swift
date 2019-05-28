@@ -58,8 +58,16 @@ public extension ElementWrapper {
         return element.isEnabledNow
     }
 
+    func pick(column: Int, value: String) {
+        element.pick(column: column, value: value)
+    }
+
     func tap() {
         element.tap()
+    }
+
+    func tapAt(_ point: CGPoint) {
+        element.tapAt(point)
     }
 
     func typeText(_ text: String) {
@@ -78,7 +86,7 @@ public extension ElementWrapper {
         return element.waitToExist(timeout)
     }
 
-    func waitToVanish(_ timeout: Timeout) {
+    func waitToVanish(_ timeout: Timeout) -> Bool {
         return element.waitToVanish(timeout)
     }
 }

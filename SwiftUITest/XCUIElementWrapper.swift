@@ -59,9 +59,21 @@ struct XCUIElementWrapper: Element {
         return element.isEnabled
     }
 
+    func pick(column: Int, value: String) {
+        waitToExist(Timeout())
+        element.pickerWheels.allElementsBoundByIndex[column].adjust(toPickerWheelValue: value)
+    }
+
     func tap() {
         waitToExist(Timeout())
         element.tap()
+    }
+
+    func tapAt(_ point: CGPoint) {
+        waitToExist(Timeout())
+        element.coordinate(withNormalizedOffset: .zero)
+            .withOffset(CGVector(dx: point.x, dy: point.y))
+            .tap()
     }
 
     func typeText(_ text: String) {
@@ -86,10 +98,12 @@ struct XCUIElementWrapper: Element {
         return element.waitForExistence(timeout: timeout.value)
     }
 
-    func waitToVanish(_ timeout: Timeout) {
-        let vanish = NSPredicate(format: "exists == false")
-
-        testCase.expectation(for: vanish, evaluatedWith: element, handler: nil)
-        testCase.waitForExpectations(timeout: timeout.value, handler: nil)
+    @discardableResult
+    func waitToVanish(_ timeout: Timeout) -> Bool {
+        let deadline = Date().addingTimeInterval(timeout.value)
+        while element.exists, Date() < deadline {
+            sleep(1)
+        }
+        return !element.exists
     }
 }

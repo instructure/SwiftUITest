@@ -19,10 +19,12 @@ public protocol Element {
     var label: String { get }
     var id: String { get }
     var elementType: String { get }
+    func pick(column: Int, value: String)
     func tap()
+    func tapAt(_ point: CGPoint)
     @discardableResult
     func waitToExist(_ timeout: Timeout) -> Bool
-    func waitToVanish(_ timeout: Timeout)
+    func waitToVanish(_ timeout: Timeout) -> Bool
     func typeText(_ text: String)
     func swipeDown()
     func swipeUp()
